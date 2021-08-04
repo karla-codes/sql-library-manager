@@ -38,7 +38,8 @@ app.use('/users', usersRouter);
 app.use(function (req, res, next) {
   const err = createError(404, "Uh oh! Looks like this page doesn't exist.");
   console.log(`Error: ${err.statusCode}`, err.message);
-  next(err);
+  res.render('page-not-found');
+  // next(err);
 });
 
 // error handler
