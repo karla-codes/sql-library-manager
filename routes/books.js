@@ -23,9 +23,8 @@ router.get(
 );
 
 // Create a new book form
-router.get('/new-book', (req, res) => {
+router.get('/new', (req, res) => {
   res.render('new-book');
-  // console.log(req.body);
 });
 
 // POST new book
