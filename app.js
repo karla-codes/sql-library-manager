@@ -39,7 +39,6 @@ app.use(function (req, res, next) {
   const err = createError(404, "Uh oh! Looks like this page doesn't exist.");
   console.log(`Error: ${err.statusCode}`, err.message);
   res.render('page-not-found');
-  // next(err);
 });
 
 // error handler
@@ -49,8 +48,12 @@ app.use(function (err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+  err.status === 404
+    ? res.status(404).render('page-not-found')
+    : res.status(err.status || 500).render('error');
+
+  console.log(`Error: ${res.statusCode}`, err.message);
+  // res.render('error');
 });
 
 module.exports = app;
