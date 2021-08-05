@@ -1,0 +1,10 @@
+extends layout 
+
+block content 
+  h1 Delete Book 
+  p Are you sure you want to delete?
+  form(method="post" action="/books/" + book.id + "/delete") 
+    p 
+      a(class="button" href="/books/" + book.id) Cancel 
+    p 
+      input(type="submit" value="Delete Book")
