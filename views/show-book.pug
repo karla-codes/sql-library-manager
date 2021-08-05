@@ -3,12 +3,11 @@ extends layout
 block content 
   h1=title 
   div  
-    p Title: #{title}
     p Author:  #{author}
     p Genre:  #{genre}
     p Year: #{year}
 
   div 
     a(href="/") Back
-    a(href="/edit") Edit Book  
-    a(href="/delete") Delete Book
+    a(href="/books/" + id + "/edit") Edit Book  
+    a(href="/books/" + id + "/delete") Delete Book
