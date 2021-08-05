@@ -41,7 +41,12 @@ router.get(
   '/:id',
   asyncHandler(async (req, res) => {
     const book = await Book.findByPk(req.params.id);
-    res.redirect('/');
+    res.render('show-book', {
+      title: book.title,
+      author: book.author,
+      genre: book.genre,
+      year: book.year,
+    });
   })
 );
 
