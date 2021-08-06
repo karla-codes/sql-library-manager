@@ -58,7 +58,9 @@ router.get(
         id: book.id,
       });
     } else {
-      res.status(404).render('page-not-found');
+      const err = new Error();
+      err.status = 404;
+      throw err;
     }
   })
 );
@@ -93,7 +95,7 @@ router.post(
         book.id = req.params.id;
         res.render('update-book', { book, error: true });
       } else {
-        throw error;
+        throw err;
       }
     }
   })
